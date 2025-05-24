@@ -10,6 +10,8 @@ export function Sudoku() {
   const [initialGrid, setInitialGrid] = useState<SudokuGrid>(Array(9).fill(null).map(() => Array(9).fill(null)));
   const [isComplete, setIsComplete] = useState(false);
   const [isValid, setIsValid] = useState(true);
+  const [selectedCell, setSelectedCell] = useState<[number, number] | null>(null);
+  const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
 
   const generatePuzzle = () => {
     // Simple puzzle generation - in a real app, you'd want more sophisticated generation
@@ -79,14 +81,24 @@ export function Sudoku() {
     return true;
   };
 
-  const handleCellChange = (row: number, col: number, value: string) => {
+  const handleCellClick = (row: number, col: number) => {
+    if (initialGrid[row][col] !== null) return; // Can't select pre-filled cells
+    setSelectedCell([row, col]);
+  };
+
+  const handleNumberSelect = (num: number) => {
+    setSelectedNumber(num);
+    if (selectedCell) {
+      const [row, col] = selectedCell;
+      handleCellChange(row, col, num);
+    }
+  };
+
+  const handleCellChange = (row: number, col: number, value: number | null) => {
     if (initialGrid[row][col] !== null) return; // Can't change pre-filled cells
 
-    const num = value === '' ? null : parseInt(value);
-    if (num !== null && (num < 1 || num > 9)) return;
-
     const newGrid = grid.map(r => [...r]);
-    newGrid[row][col] = num;
+    newGrid[row][col] = value;
     setGrid(newGrid);
 
     const valid = validateGrid(newGrid);
@@ -130,26 +142,67 @@ export function Sudoku() {
             {/* Sudoku Grid */}
             <div className="grid grid-cols-9 gap-1 p-2 bg-muted border-2 border-border">
               {grid.map((row, rowIndex) =>
-                row.map((cell, colIndex) => (
-                  <Input
-                    key={`${rowIndex}-${colIndex}`}
-                    type="text"
-                    maxLength={1}
-                    value={cell || ''}
-                    onChange={(e) => handleCellChange(rowIndex, colIndex, e.target.value)}
-                    className={`w-8 h-8 text-center p-0 text-sm font-semibold ${
-                      initialGrid[rowIndex][colIndex] !== null 
-                        ? 'bg-secondary text-foreground font-bold' 
-                        : 'bg-background'
-                    } ${
-                      (rowIndex + 1) % 3 === 0 && rowIndex < 8 ? 'border-b-2 border-border' : ''
-                    } ${
-                      (colIndex + 1) % 3 === 0 && colIndex < 8 ? 'border-r-2 border-border' : ''
-                    }`}
-                    disabled={initialGrid[rowIndex][colIndex] !== null}
-                  />
-                ))
+                row.map((cell, colIndex) => {
+                  const isSelected = selectedCell && selectedCell[0] === rowIndex && selectedCell[1] === colIndex;
+                  const isPrefilled = initialGrid[rowIndex][colIndex] !== null;
+                  
+                  return (
+                    <div
+                      key={`${rowIndex}-${colIndex}`}
+                      onClick={() => handleCellClick(rowIndex, colIndex)}
+                      className={`w-8 h-8 flex items-center justify-center text-center text-sm font-semibold cursor-pointer border ${
+                        isPrefilled 
+                          ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-bold' 
+                          : 'bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700'
+                      } ${
+                        isSelected ? 'ring-2 ring-blue-500 bg-blue-100 dark:bg-blue-900' : ''
+                      } ${
+                        (rowIndex + 1) % 3 === 0 && rowIndex < 8 ? 'border-b-2 border-gray-600' : ''
+                      } ${
+                        (colIndex + 1) % 3 === 0 && colIndex < 8 ? 'border-r-2 border-gray-600' : ''
+                      }`}
+                    >
+                      {cell || ''}
+                    </div>
+                  );
+                })
               )}
+            </div>
+
+            {/* Number Selection */}
+            <div className="w-full">
+              <p className="text-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+                Select a number:
+              </p>
+              <div className="grid grid-cols-5 gap-2 max-w-xs mx-auto">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                  <Button
+                    key={num}
+                    onClick={() => handleNumberSelect(num)}
+                    variant={selectedNumber === num ? "default" : "outline"}
+                    className={`h-10 w-10 p-0 text-lg font-bold ${
+                      selectedNumber === num 
+                        ? 'bg-blue-500 hover:bg-blue-600 text-white' 
+                        : 'hover:bg-blue-50 dark:hover:bg-blue-900'
+                    }`}
+                  >
+                    {num}
+                  </Button>
+                ))}
+                <Button
+                  onClick={() => {
+                    setSelectedNumber(null);
+                    if (selectedCell) {
+                      const [row, col] = selectedCell;
+                      handleCellChange(row, col, null);
+                    }
+                  }}
+                  variant="outline"
+                  className="h-10 w-10 p-0 text-lg font-bold hover:bg-red-50 dark:hover:bg-red-900 col-span-1"
+                >
+                  ×
+                </Button>
+              </div>
             </div>
 
             {/* Controls */}

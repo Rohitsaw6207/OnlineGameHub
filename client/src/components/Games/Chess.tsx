@@ -159,6 +159,7 @@ export function Chess() {
       if (fromRow === row && fromCol === col) {
         // Deselect
         setSelectedSquare(null);
+        setPossibleMoves([]);
       } else if (isValidMove(fromRow, fromCol, row, col)) {
         // Make move
         const newBoard = board.map(r => [...r]);
@@ -167,13 +168,16 @@ export function Chess() {
         setBoard(newBoard);
         setCurrentPlayer(currentPlayer === 'white' ? 'black' : 'white');
         setSelectedSquare(null);
+        setPossibleMoves([]);
       } else {
         // Invalid move, try to select new piece
         const piece = board[row][col];
         if (piece && piece.color === currentPlayer) {
           setSelectedSquare([row, col]);
+          setPossibleMoves(getPossibleMoves(row, col));
         } else {
           setSelectedSquare(null);
+          setPossibleMoves([]);
         }
       }
     } else {
@@ -181,6 +185,7 @@ export function Chess() {
       const piece = board[row][col];
       if (piece && piece.color === currentPlayer) {
         setSelectedSquare([row, col]);
+        setPossibleMoves(getPossibleMoves(row, col));
       }
     }
   };
@@ -189,11 +194,17 @@ export function Chess() {
     return selectedSquare && selectedSquare[0] === row && selectedSquare[1] === col;
   };
 
+  const isPossibleMove = (row: number, col: number) => {
+    return possibleMoves.some(([r, c]) => r === row && c === col);
+  };
+
   const getSquareColor = (row: number, col: number) => {
     const isLight = (row + col) % 2 === 0;
     const isSelected = isSquareSelected(row, col);
+    const isPossible = isPossibleMove(row, col);
     
-    if (isSelected) return 'bg-yellow-400';
+    if (isSelected) return 'bg-yellow-400 shadow-lg';
+    if (isPossible) return isLight ? 'bg-green-300 shadow-md' : 'bg-green-500 shadow-md';
     return isLight ? 'bg-amber-100 dark:bg-amber-900' : 'bg-amber-800 dark:bg-amber-700';
   };
 
