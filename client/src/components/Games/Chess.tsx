@@ -37,6 +37,7 @@ export function Chess() {
   const [board, setBoard] = useState<Board>(createInitialBoard());
   const [currentPlayer, setCurrentPlayer] = useState<PieceColor>('white');
   const [selectedSquare, setSelectedSquare] = useState<[number, number] | null>(null);
+  const [possibleMoves, setPossibleMoves] = useState<[number, number][]>([]);
   const [gameStarted, setGameStarted] = useState(false);
 
   function createInitialBoard(): Board {
@@ -71,11 +72,27 @@ export function Chess() {
     return board;
   }
 
+  const getPossibleMoves = (row: number, col: number): [number, number][] => {
+    const moves: [number, number][] = [];
+    const piece = board[row][col];
+    if (!piece || piece.color !== currentPlayer) return moves;
+
+    for (let toRow = 0; toRow < 8; toRow++) {
+      for (let toCol = 0; toCol < 8; toCol++) {
+        if (isValidMove(row, col, toRow, toCol)) {
+          moves.push([toRow, toCol]);
+        }
+      }
+    }
+    return moves;
+  };
+
   const startGame = (mode: GameMode) => {
     setGameMode(mode);
     setBoard(createInitialBoard());
     setCurrentPlayer('white');
     setSelectedSquare(null);
+    setPossibleMoves([]);
     setGameStarted(true);
   };
 
@@ -84,6 +101,7 @@ export function Chess() {
     setBoard(createInitialBoard());
     setCurrentPlayer('white');
     setSelectedSquare(null);
+    setPossibleMoves([]);
     setGameStarted(false);
   };
 

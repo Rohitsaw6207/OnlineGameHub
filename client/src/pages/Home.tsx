@@ -104,6 +104,16 @@ const games = [
     category: '3D',
     players: 'Single Player',
     route: '/game/helix-jump'
+  },
+  {
+    id: 'other-games',
+    title: 'Other Games',
+    description: 'More exciting games coming soon! Stay tuned for updates.',
+    icon: '🎯',
+    gradient: 'from-pink-500 to-purple-500',
+    category: 'Coming Soon',
+    players: 'All Players',
+    route: '/coming-soon'
   }
 ];
 

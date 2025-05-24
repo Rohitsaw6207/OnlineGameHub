@@ -21,7 +21,7 @@ export function SnakeGame() {
   const [showResult, setShowResult] = useState(false);
 
   const BOARD_SIZE = 20;
-  const GAME_SPEED = 150;
+  const GAME_SPEED = 100; // Faster speed for more difficulty
 
   // Animated background elements
   const backgroundElements = Array.from({ length: 12 }, (_, i) => (
@@ -183,38 +183,37 @@ export function SnakeGame() {
       <div className="w-full max-w-lg relative z-10">
         {!gameRunning && !gameOver ? (
           // Game Start Screen
-          <Card className="bg-green-800/90 border-green-700 shadow-2xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                SNAKE GAME
-              </CardTitle>
-              <p className="text-green-200">Classic arcade snake adventure</p>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="text-center space-y-2">
-                <p className="text-green-300">High Score: <span className="font-bold text-green-400">{highScore}</span></p>
-                <p className="text-green-200 text-sm">Use arrow keys or on-screen controls</p>
-              </div>
+          <div className="bg-black rounded-2xl p-8 shadow-2xl border-2 border-green-500">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-green-400 mb-4 animate-pulse">🐍 SNAKE GAME</h2>
+              <p className="text-green-300 text-lg mb-2">Classic arcade snake adventure</p>
+              <p className="text-green-200 text-sm">Use arrow keys or on-screen controls</p>
+            </div>
+            
+            <div className="text-center space-y-4">
+              <p className="text-green-300">High Score: <span className="font-bold text-green-400 text-xl">{highScore}</span></p>
+              
               <Button
                 onClick={startGame}
-                className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-4 text-lg"
+                className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
               >
-                <Play className="mr-2 h-5 w-5" />
-                Start Game
+                <Play className="mr-3 h-6 w-6" />
+                START PLAYING
               </Button>
+              
               <Link href="/">
-                <Button variant="outline" className="w-full border-green-600 text-green-300 hover:bg-green-700">
+                <Button variant="outline" className="w-full border-green-600 text-green-300 hover:bg-green-700/20 py-3">
                   <Home className="mr-2 h-4 w-4" />
                   Back to Games
                 </Button>
               </Link>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         ) : (
           // Game Board
           <div className="space-y-4">
             {/* Score Display */}
-            <div className="flex justify-between items-center bg-green-800/60 rounded-lg px-6 py-3 border border-green-700">
+            <div className="flex justify-between items-center bg-black rounded-lg px-6 py-3 border-2 border-green-500">
               <div className="text-center">
                 <p className="text-sm text-green-300">Score</p>
                 <p className="text-2xl font-bold text-green-400">{score}</p>
@@ -226,9 +225,9 @@ export function SnakeGame() {
             </div>
 
             {/* Game Board */}
-            <div className="bg-green-800/60 p-4 rounded-xl border border-green-700">
+            <div className="bg-black p-4 rounded-xl border-2 border-green-500">
               <div 
-                className="grid gap-0 mx-auto bg-green-900/50 rounded-lg p-2"
+                className="grid gap-0 mx-auto bg-black rounded-lg p-2"
                 style={{ 
                   gridTemplateColumns: `repeat(${BOARD_SIZE}, 1fr)`,
                   aspectRatio: '1/1',
