@@ -1,0 +1,144 @@
+Create a full React website called **Online Game Hub** with the following specifications. The code should be clean, modular, and ready for deployment.
+
+✅ GENERAL STRUCTURE
+
+- Use **React Router** for all routing.
+- Use **persistent Header and Footer** on all pages.
+- Implement **Light/Dark theme toggle** using global state or context.
+- Use **modern, responsive design** with smooth transitions and hover effects.
+
+---
+
+✅ HEADER (Sticky on all pages)
+
+- Left: Website logo (image).
+- Center: Title — Online Game Hub.
+- Right:
+  - Home button (navigates to /).
+  - Light/Dark Theme Toggle.
+  - Profile Picture icon → On click, show dropdown with:
+    - Full Name, Username, Email, Phone
+    - Profile picture preview
+    - Select from 5–6 predefined avatars
+    - “Update” button to save selected picture (store globally or in Firebase)
+
+---
+
+✅ FOOTER (Sticky on all pages)
+
+- Left: “Developed by Rohit Kumar”
+- Center: “© 2025 Online Game Hub. All rights reserved. | Privacy Policy”
+- Right: Clickable social icons:
+  - Gmail
+  - LinkedIn
+  - GitHub
+
+---
+
+✅ LANDING PAGE `/`
+
+Display **10 game cards**, each with:
+- Game Title
+- Short description
+- ▶️ “Play Now” button → navigate to game route
+
+Games:
+1. Tic Tac Toe → `/tic-tac-toe`
+2. Snake Game → `/snake-game`
+3. Sudoku → `/sudoku`
+4. Chess → `/chess`
+5. Pong → `/pong`
+6. Flappy Bird → `/flappy-bird`
+7. Ludo → `/ludo`
+8. Breakout → `/breakout`
+9. Dino Run → `/dino-run`
+10. Helix Jump → `/helix-jump`
+
+---
+
+✅ GAME ROUTES (each must contain complete playable logic):
+
+1. **/tic-tac-toe**
+   - Buttons: Play Local, Play vs Computer
+   - Implement game logic for both
+
+2. **/snake-game**
+   - Auto-start
+   - Classic snake logic with arrow keys
+
+3. **/sudoku**
+   - Auto-start
+   - Sudoku grid with number input & validation
+
+4. **/chess**
+   - Buttons: Play Local, Play vs Computer
+   - Use a React chess library or implement from scratch
+
+5. **/pong**
+   - Auto-start
+   - Player vs AI pong mechanics
+
+6. **/flappy-bird**
+   - Auto-start
+   - Click to flap, avoid pipes, score tracking
+
+7. **/ludo**
+   - Buttons: 1P vs 3 CPU, 2P vs 2 CPU, 3P vs 1 CPU, Local Multiplayer
+   - Turn-based logic
+
+8. **/breakout**
+   - Auto-start
+   - Paddle, ball physics, block-breaking
+
+9. **/dino-run**
+   - Auto-start endless runner
+   - Jump over cacti, avoid birds, score tracking
+
+10. **/helix-jump**
+    - Auto-start
+    - Control ball drop through spiral, avoid obstacles
+
+---
+
+✅ PROFILE PAGE `/profile`
+
+Display:
+- Full Name, Username, Email, Phone
+- Profile Picture
+- Avatar selection dropdown (5–6 images)
+- Update button (saves profile data in global state or Firebase)
+
+---
+
+✅ AUTHENTICATION (Firebase or mock)
+
+1. `/signup`
+   - First Name, Last Name, Email, Phone, Password, Re-enter Password
+
+2. `/login`
+   - Email, Password
+
+3. `/forgot-password`
+   - Input email → Send reset link (Firebase if possible)
+
+---
+
+✅ PRIVACY POLICY `/privacy-policy`
+
+Static text:
+> We respect your privacy. Your data is only used for login and profile customization. We don’t share or sell your personal information.
+
+---
+
+✅ TECH & DEPLOYMENT REQUIREMENTS
+
+- Use **React + React Router**
+- Global state: React Context or Firebase
+- Responsive and mobile-friendly
+- Use reusable components where possible
+- Allow downloading and deploying the site (no Bolt.ai references)
+- Hostable on platforms like GitHub Pages or Vercel
+
+---
+
+Create this full project in React, with all pages, games, routing, profile, authentication, and theme toggle fully functional.
