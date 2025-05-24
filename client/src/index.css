@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+  
+  /* Gaming theme colors */
+  --game-dark: 15 23 42; /* #0F172A */
+  --game-medium: 30 41 59; /* #1E293B */
+  --game-light: 51 65 85; /* #334155 */
+  --game-purple: 139 92 246; /* #8B5CF6 */
+  --game-cyan: 6 182 212; /* #06B6D4 */
+  --game-green: 16 185 129; /* #10B981 */
+  --game-orange: 245 158 11; /* #F59E0B */
+}
+
+.light {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', 'Inter', monospace;
+  }
+}
+
+@layer components {
+  .game-card {
+    @apply transition-all duration-300 ease-out;
+    background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+  }
+  
+  .game-card:hover {
+    @apply -translate-y-2 scale-105;
+    box-shadow: 0 20px 40px hsla(var(--game-purple), 0.3);
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, hsl(var(--game-purple)), hsl(var(--game-cyan)));
+    @apply transition-all duration-300;
+  }
+  
+  .btn-primary:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 10px 20px hsla(var(--game-purple), 0.4);
+  }
+  
+  .glass-effect {
+    background: hsla(var(--card), 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(var(--border), 0.1);
+  }
+  
+  .neon-glow {
+    text-shadow: 0 0 10px hsl(var(--game-purple));
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
+
+@keyframes glow {
+  from { 
+    box-shadow: 0 0 20px hsla(var(--game-purple), 0.5); 
+  }
+  to { 
+    box-shadow: 0 0 30px hsla(var(--game-purple), 0.8); 
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(30px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--game-purple));
+}
+
+/* Focus styles */
+.focus-visible:focus-visible {
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-background;
+}
+
+/* Loading animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Game specific styles */
+.canvas-container {
+  @apply relative border-2 border-border rounded-lg overflow-hidden;
+  box-shadow: 0 10px 30px hsla(var(--game-purple), 0.2);
+}
+
+.score-display {
+  @apply text-2xl font-bold font-mono bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent;
+}
+
+/* Button hover effects */
+.btn-game {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.btn-game::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 transform scale-x-0 transition-transform duration-300 origin-left;
+}
+
+.btn-game:hover::before {
+  @apply scale-x-100;
+}
+
+.btn-game > * {
+  @apply relative z-10;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl;
+}
+
+.card-hover:hover {
+  box-shadow: 0 25px 50px -12px hsla(var(--game-purple), 0.25);
+}
+
+/* Responsive typography */
+@screen sm {
+  html {
+    font-size: 16px;
+  }
+}
+
+@screen lg {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 0 0% 20%;
+    --muted: 0 0% 15%;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
