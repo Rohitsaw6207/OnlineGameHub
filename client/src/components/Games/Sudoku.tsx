@@ -119,9 +119,37 @@ export function Sudoku() {
     generatePuzzle();
   }, []);
 
+  // Animated background elements
+  const backgroundElements = Array.from({ length: 20 }, (_, i) => (
+    <div
+      key={i}
+      className="absolute opacity-10 dark:opacity-20 text-3xl animate-float"
+      style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`,
+        animationDuration: `${4 + Math.random() * 6}s`
+      }}
+    >
+      {['🔢', '🧮', '🎯', '💡', '⭐'][Math.floor(Math.random() * 5)]}
+    </div>
+  ));
+
   return (
-    <div className="flex flex-col items-center space-y-6 p-6">
-      <Card className="w-full max-w-lg">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 dark:from-blue-950 dark:via-purple-950 dark:to-indigo-950 relative overflow-hidden flex items-center justify-center p-4">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {backgroundElements}
+        {/* Number decorations */}
+        <div className="absolute top-10 right-10 text-8xl opacity-20 dark:opacity-30 animate-bounce text-blue-300 dark:text-blue-200">
+          🧩
+        </div>
+        <div className="absolute bottom-10 left-10 text-6xl opacity-15 dark:opacity-25 animate-pulse text-purple-300 dark:text-purple-200">
+          🔢
+        </div>
+      </div>
+
+      <Card className="w-full max-w-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-2xl border-2 border-blue-200 dark:border-blue-800">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
             Sudoku

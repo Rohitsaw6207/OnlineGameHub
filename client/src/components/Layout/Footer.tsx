@@ -28,13 +28,13 @@ export function Footer() {
           {/* Right: Social Links */}
           <div className="flex space-x-4">
             <a 
-              href="mailto:rohit@example.com" 
+              href="mailto:rohitku@6207gmail.com" 
               className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition-all group"
             >
               <Mail className="h-5 w-5" />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/rohit-kumar-saw6207" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all group"
@@ -42,7 +42,7 @@ export function Footer() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a 
-              href="https://github.com" 
+              href="https://github.com/Rohitsaw6207" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-gray-800 hover:text-white transition-all group"

@@ -56,9 +56,54 @@ export function TicTacToe() {
     const availableMoves = squares.map((square, index) => square === null ? index : null).filter(val => val !== null) as number[];
     if (availableMoves.length === 0) return squares;
     
-    const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+    // EXTREMELY DIFFICULT AI - Minimax algorithm with perfect play
+    const minimax = (board: Player[], depth: number, isMaximizing: boolean): number => {
+      const result = checkWinner(board);
+      
+      if (result === 'O') return 10 - depth;  // Computer wins
+      if (result === 'X') return depth - 10;  // Player wins  
+      if (result === 'tie') return 0;         // Draw
+      
+      if (isMaximizing) {
+        let bestScore = -Infinity;
+        for (let i = 0; i < 9; i++) {
+          if (board[i] === null) {
+            board[i] = 'O';
+            const score = minimax(board, depth + 1, false);
+            board[i] = null;
+            bestScore = Math.max(score, bestScore);
+          }
+        }
+        return bestScore;
+      } else {
+        let bestScore = Infinity;
+        for (let i = 0; i < 9; i++) {
+          if (board[i] === null) {
+            board[i] = 'X';
+            const score = minimax(board, depth + 1, true);
+            board[i] = null;
+            bestScore = Math.min(score, bestScore);
+          }
+        }
+        return bestScore;
+      }
+    };
+    
+    let bestScore = -Infinity;
+    let bestMove = availableMoves[0];
+    
+    for (let move of availableMoves) {
+      const testBoard = [...squares];
+      testBoard[move] = 'O';
+      const score = minimax(testBoard, 0, false);
+      if (score > bestScore) {
+        bestScore = score;
+        bestMove = move;
+      }
+    }
+    
     const newSquares = [...squares];
-    newSquares[randomMove] = 'O';
+    newSquares[bestMove] = 'O';
     return newSquares;
   };
 
