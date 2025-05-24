@@ -112,21 +112,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Welcome Section for Authenticated Users */}
-      {user && (
-        <section className="py-8 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h1 className="font-bold text-2xl sm:text-3xl mb-4 font-mono">
-              <span className="bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent">
-                Welcome back, Gamer!
-              </span>
-            </h1>
-            <p className="text-lg text-muted-foreground mb-6">
-              Ready to dive into your next gaming adventure? Choose your game below!
-            </p>
-          </div>
-        </section>
-      )}
+
 
       {/* Games Grid Section */}
       <section id="featured-games" className="py-16 px-4 sm:px-6 lg:px-8">

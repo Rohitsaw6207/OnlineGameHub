@@ -79,48 +79,7 @@ export default function Landing() {
       {/* Games Preview Section */}
       <section id="preview-games" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-bold text-3xl sm:text-4xl mb-4 font-mono">
-              <span className="bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent">
-                Featured Games
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Get a preview of our amazing game collection. Sign up to start playing!
-            </p>
-          </div>
 
-          {/* Game Preview Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[
-              { name: 'Tic Tac Toe', icon: '⚡', color: 'from-red-500 to-pink-500' },
-              { name: 'Snake Game', icon: '🐍', color: 'from-green-500 to-emerald-500' },
-              { name: 'Sudoku', icon: '🔢', color: 'from-blue-500 to-cyan-500' },
-              { name: 'Chess', icon: '♛', color: 'from-purple-500 to-indigo-500' },
-              { name: 'Pong', icon: '🏓', color: 'from-yellow-500 to-orange-500' },
-              { name: 'Flappy Bird', icon: '🐦', color: 'from-teal-500 to-cyan-500' },
-              { name: 'Ludo', icon: '🎲', color: 'from-rose-500 to-pink-500' },
-              { name: 'Breakout', icon: '🧱', color: 'from-violet-500 to-purple-500' },
-              { name: 'Dino Run', icon: '🦕', color: 'from-amber-500 to-yellow-500' },
-              { name: 'Helix Jump', icon: '🌀', color: 'from-indigo-500 to-purple-500' },
-            ].map((game, index) => (
-              <div 
-                key={game.name}
-                className="relative group cursor-pointer"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`w-full aspect-square bg-gradient-to-br ${game.color} rounded-2xl flex items-center justify-center text-4xl group-hover:scale-105 transition-transform duration-300 shadow-lg`}>
-                  {game.icon}
-                </div>
-                <p className="text-center mt-2 text-sm font-medium text-muted-foreground">
-                  {game.name}
-                </p>
-                <div className="absolute inset-0 bg-black/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-white font-semibold">Sign up to play!</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import { useParams } from "wouter";
 import { TicTacToe } from "../components/Games/EnhancedTicTacToe";
-import { SnakeGame } from "../components/Games/SnakeGame";
+import { SnakeGame } from "../components/Games/EnhancedSnakeGame";
 import { Sudoku } from "../components/Games/Sudoku";
 import { Chess } from "../components/Games/Chess";
 import { Pong } from "../components/Games/Pong";

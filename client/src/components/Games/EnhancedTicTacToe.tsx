@@ -156,13 +156,13 @@ export function TicTacToe() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 relative overflow-hidden flex items-center justify-center p-4">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         {backgroundElements}
       </div>
 
-      <div className="max-w-md mx-auto relative z-10">
+      <div className="w-full max-w-md relative z-10">
         {!gameMode ? (
           // Game Mode Selection
           <Card className="bg-slate-800/90 border-slate-700 shadow-2xl">
