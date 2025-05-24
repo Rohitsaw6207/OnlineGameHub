@@ -12,7 +12,7 @@ const games = [
     gradient: 'from-red-500 to-pink-500',
     category: 'Strategy',
     players: '2 Players',
-    route: '/tic-tac-toe'
+    route: '/game/tic-tac-toe'
   },
   {
     id: 'snake-game',
@@ -22,7 +22,7 @@ const games = [
     gradient: 'from-green-500 to-emerald-500',
     category: 'Arcade',
     players: 'Single Player',
-    route: '/snake-game'
+    route: '/game/snake-game'
   },
   {
     id: 'sudoku',
@@ -32,7 +32,7 @@ const games = [
     gradient: 'from-blue-500 to-cyan-500',
     category: 'Puzzle',
     players: 'Single Player',
-    route: '/sudoku'
+    route: '/game/sudoku'
   },
   {
     id: 'chess',
@@ -42,7 +42,7 @@ const games = [
     gradient: 'from-purple-500 to-indigo-500',
     category: 'Strategy',
     players: '2 Players',
-    route: '/chess'
+    route: '/game/chess'
   },
   {
     id: 'pong',
@@ -52,7 +52,7 @@ const games = [
     gradient: 'from-yellow-500 to-orange-500',
     category: 'Arcade',
     players: 'vs AI',
-    route: '/pong'
+    route: '/game/pong'
   },
   {
     id: 'flappy-bird',
@@ -62,7 +62,7 @@ const games = [
     gradient: 'from-teal-500 to-cyan-500',
     category: 'Endless',
     players: 'Single Player',
-    route: '/flappy-bird'
+    route: '/game/flappy-bird'
   },
   {
     id: 'ludo',
@@ -72,7 +72,7 @@ const games = [
     gradient: 'from-rose-500 to-pink-500',
     category: 'Board Game',
     players: '2-4 Players',
-    route: '/ludo'
+    route: '/game/ludo'
   },
   {
     id: 'breakout',
@@ -82,7 +82,7 @@ const games = [
     gradient: 'from-violet-500 to-purple-500',
     category: 'Arcade',
     players: 'Single Player',
-    route: '/breakout'
+    route: '/game/breakout'
   },
   {
     id: 'dino-run',
@@ -92,7 +92,7 @@ const games = [
     gradient: 'from-amber-500 to-yellow-500',
     category: 'Runner',
     players: 'Single Player',
-    route: '/dino-run'
+    route: '/game/dino-run'
   },
   {
     id: 'helix-jump',
@@ -102,7 +102,7 @@ const games = [
     gradient: 'from-indigo-500 to-blue-500',
     category: '3D',
     players: 'Single Player',
-    route: '/helix-jump'
+    route: '/game/helix-jump'
   }
 ];
 

@@ -34,36 +34,7 @@ function Router() {
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       
       {/* Game routes */}
-      <Route path="/tic-tac-toe">
-        {() => <GamePage params={{ game: 'tic-tac-toe' }} />}
-      </Route>
-      <Route path="/snake-game">
-        {() => <GamePage params={{ game: 'snake-game' }} />}
-      </Route>
-      <Route path="/sudoku">
-        {() => <GamePage params={{ game: 'sudoku' }} />}
-      </Route>
-      <Route path="/chess">
-        {() => <GamePage params={{ game: 'chess' }} />}
-      </Route>
-      <Route path="/pong">
-        {() => <GamePage params={{ game: 'pong' }} />}
-      </Route>
-      <Route path="/flappy-bird">
-        {() => <GamePage params={{ game: 'flappy-bird' }} />}
-      </Route>
-      <Route path="/ludo">
-        {() => <GamePage params={{ game: 'ludo' }} />}
-      </Route>
-      <Route path="/breakout">
-        {() => <GamePage params={{ game: 'breakout' }} />}
-      </Route>
-      <Route path="/dino-run">
-        {() => <GamePage params={{ game: 'dino-run' }} />}
-      </Route>
-      <Route path="/helix-jump">
-        {() => <GamePage params={{ game: 'helix-jump' }} />}
-      </Route>
+      <Route path="/game/:game" component={GamePage} />
       
       {/* 404 Fallback */}
       <Route component={NotFound} />
