@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Star, Users, Trophy } from "lucide-react";
+import { useAuth } from "../contexts/AuthContext";
 
 const games = [
   {
@@ -107,62 +108,25 @@ const games = [
 ];
 
 export default function Home() {
-  const scrollToGames = () => {
-    const gamesSection = document.getElementById('featured-games');
-    if (gamesSection) {
-      gamesSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const { user } = useAuth();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background Gaming Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 animate-bounce">
-            <div className="text-6xl">🎮</div>
+      {/* Welcome Section for Authenticated Users */}
+      {user && (
+        <section className="py-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="font-bold text-2xl sm:text-3xl mb-4 font-mono">
+              <span className="bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent">
+                Welcome back, Gamer!
+              </span>
+            </h1>
+            <p className="text-lg text-muted-foreground mb-6">
+              Ready to dive into your next gaming adventure? Choose your game below!
+            </p>
           </div>
-          <div className="absolute top-20 right-20 animate-pulse">
-            <Trophy className="h-20 w-20 text-cyan-500" />
-          </div>
-          <div className="absolute bottom-20 left-1/4 animate-bounce" style={{ animationDelay: '1s' }}>
-            <div className="text-4xl">🎲</div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto text-center relative">
-          <h1 className="font-bold text-4xl sm:text-5xl lg:text-7xl mb-6 animate-in slide-in-from-bottom-4 duration-1000">
-            <span className="bg-gradient-to-r from-purple-600 via-cyan-500 to-green-500 bg-clip-text text-transparent font-mono">
-              Epic Gaming
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent font-mono">
-              Adventure Awaits
-            </span>
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-in slide-in-from-bottom-6 duration-1000 delay-200">
-            Dive into a world of classic and modern games. From strategic chess battles to fast-paced arcade action, 
-            find your next gaming obsession right here.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in slide-in-from-bottom-8 duration-1000 delay-300">
-            <Button 
-              size="lg" 
-              onClick={scrollToGames}
-              className="bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-white px-8 py-4 text-lg"
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Start Playing
-            </Button>
-            <Link href="/signup">
-              <Button size="lg" variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 text-lg">
-                <Users className="mr-2 h-5 w-5" />
-                Sign Up Free
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Games Grid Section */}
       <section id="featured-games" className="py-16 px-4 sm:px-6 lg:px-8">
