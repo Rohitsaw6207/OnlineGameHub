@@ -270,3 +270,60 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Game Animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.1;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 0.3;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Mobile Game Controls */
+.mobile-controls {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  grid-template-rows: 60px 60px 60px;
+  gap: 8px;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.control-btn {
+  background: rgba(51, 65, 85, 0.8);
+  border: 2px solid rgb(71, 85, 105);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.2s;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.control-btn:hover {
+  background: rgb(71, 85, 105);
+  border-color: rgb(147, 51, 234);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+  background: rgb(147, 51, 234);
+}
+
+.control-up { grid-column: 2; grid-row: 1; }
+.control-left { grid-column: 1; grid-row: 2; }
+.control-right { grid-column: 3; grid-row: 2; }
+.control-down { grid-column: 2; grid-row: 3; }
+
