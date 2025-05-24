@@ -107,6 +107,13 @@ const games = [
 ];
 
 export default function Home() {
+  const scrollToGames = () => {
+    const gamesSection = document.getElementById('featured-games');
+    if (gamesSection) {
+      gamesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -139,7 +146,11 @@ export default function Home() {
             find your next gaming obsession right here.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in slide-in-from-bottom-8 duration-1000 delay-300">
-            <Button size="lg" className="bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-white px-8 py-4 text-lg">
+            <Button 
+              size="lg" 
+              onClick={scrollToGames}
+              className="bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-white px-8 py-4 text-lg"
+            >
               <Play className="mr-2 h-5 w-5" />
               Start Playing
             </Button>
@@ -154,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* Games Grid Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="featured-games" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-bold text-3xl sm:text-4xl mb-4 font-mono">
