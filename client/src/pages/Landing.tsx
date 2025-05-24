@@ -50,14 +50,15 @@ export default function Landing() {
           
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in slide-in-from-bottom-8 duration-1000 delay-300">
-            <Button 
-              size="lg" 
-              onClick={scrollToGames}
-              className="bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-white px-8 py-4 text-lg"
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Start Playing
-            </Button>
+            <Link href="/">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-700 hover:to-cyan-600 text-white px-8 py-4 text-lg"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                Start Playing
+              </Button>
+            </Link>
             
             <Link href="/signup">
               <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white px-8 py-4 text-lg">

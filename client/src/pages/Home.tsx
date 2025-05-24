@@ -111,11 +111,28 @@ export default function Home() {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-background">
-
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 animate-bounce">
+          <div className="text-6xl">🎮</div>
+        </div>
+        <div className="absolute top-20 right-20 animate-pulse">
+          <Trophy className="h-20 w-20 text-cyan-500" />
+        </div>
+        <div className="absolute bottom-20 left-1/4 animate-bounce" style={{ animationDelay: '1s' }}>
+          <div className="text-4xl">🎲</div>
+        </div>
+        <div className="absolute top-1/2 right-1/3 animate-pulse" style={{ animationDelay: '2s' }}>
+          <div className="text-5xl">⚡</div>
+        </div>
+        <div className="absolute bottom-1/3 right-10 animate-bounce" style={{ animationDelay: '0.5s' }}>
+          <div className="text-4xl">🏆</div>
+        </div>
+      </div>
 
       {/* Games Grid Section */}
-      <section id="featured-games" className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="featured-games" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-bold text-3xl sm:text-4xl mb-4 font-mono">

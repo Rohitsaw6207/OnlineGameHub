@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import GamePage from "./pages/GamePage";
+import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/not-found";
 import { useAuth } from "./contexts/AuthContext";
 
@@ -49,6 +50,9 @@ function Router() {
       
       {/* Game routes */}
       <Route path="/game/:game" component={GamePage} />
+      
+      {/* Coming Soon page */}
+      <Route path="/coming-soon" component={ComingSoon} />
       
       {/* 404 Fallback */}
       <Route component={NotFound} />

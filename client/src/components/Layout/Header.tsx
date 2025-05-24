@@ -52,7 +52,8 @@ export function Header() {
               <Gamepad2 className="h-6 w-6 text-white" />
             </div>
             <Link href="/">
-              <h1 className="font-bold text-xl bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent hidden sm:block font-mono">
+              <h1 className="font-bold text-xl bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent hidden sm:block font-mono shadow-lg drop-shadow-[0_0_10px_rgba(147,51,234,0.5)]" 
+                  style={{ textShadow: '0 0 20px rgba(147,51,234,0.8), 0 0 40px rgba(6,182,212,0.6)' }}>
                 Online Game Hub
               </h1>
             </Link>
@@ -60,7 +61,8 @@ export function Header() {
 
           {/* Center Title for Mobile */}
           <Link href="/">
-            <h1 className="font-bold text-lg bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent sm:hidden font-mono">
+            <h1 className="font-bold text-lg bg-gradient-to-r from-purple-600 to-cyan-500 bg-clip-text text-transparent sm:hidden font-mono shadow-lg drop-shadow-[0_0_10px_rgba(147,51,234,0.5)]" 
+                style={{ textShadow: '0 0 20px rgba(147,51,234,0.8), 0 0 40px rgba(6,182,212,0.6)' }}>
               Game Hub
             </h1>
           </Link>
